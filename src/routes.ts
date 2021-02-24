@@ -1,12 +1,21 @@
 import { Router } from 'express';
+import { SurveyController } from './controllers/SurveyController';
 import { UserController } from './controllers/UserController';
 
 const router = Router();
 
-// Criar um objeto da classe UserController;
+// Cria os controllers:
 const userController = new UserController();
+const surveyController = new SurveyController();
 
-// Define: http://localhot:3333/users
+
+// USERS:
+// POST: http://localhost:3333/users
 router.post('/users', userController.create);
+
+
+// SURVEYS:
+// POST: http://localhost:3333/users
+router.post('/surveys', surveyController.create);
 
 export{ router };
