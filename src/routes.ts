@@ -9,13 +9,16 @@ const userController = new UserController();
 const surveyController = new SurveyController();
 
 
-// USERS:
+// --- USERS:
 // POST: http://localhost:3333/users
 router.post('/users', userController.create);
 
 
-// SURVEYS:
+// --- SURVEYS:
 // POST: http://localhost:3333/users
 router.post('/surveys', surveyController.create);
+// GET: http://localhost:3333/users
+router.get('/surveys', surveyController.show);
+
 
 export{ router };
