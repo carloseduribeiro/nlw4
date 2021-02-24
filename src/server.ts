@@ -1,33 +1,11 @@
 import 'reflect-metadata' ;
 import './database';    // Faz a conexão com o banco de dados sempre que a aplicação é iniciada;
-
 import express from 'express';
+import { router } from './routes';
 
 const app = express();
 
-/**
- * 
- * GET => consultar,
- * POST => salvar,
- * PUT => alterar,
- * DELETE => deletar,
- * PATCH => alteração específica
- */
-
-// --- Rotas:
-
-// http://localhot:3333/users
-app.get("/", (request, response) => {
-    return response.json({message : "Hello World - NLW04"});
-});
-
-// 1 Param -> Rota(Recurso API)
-// 2 Param -> request, response
-
-// http://localhost:3333/
-app.post("/", (request, response) => {
-    // Recebeu os dados para salvar:
-    return response.json({message: "Os dados foram salvos com sucesso!"});
-});
+app.use(express.json());    // Informa o express que o formato que será trabalhado. 
+app.use(router);
 
 app.listen(3333, () => console.log("Server is running!"));
