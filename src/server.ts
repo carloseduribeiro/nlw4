@@ -1,3 +1,6 @@
+import 'reflect-metadata' ;
+import './database';    // Faz a conexão com o banco de dados sempre que a aplicação é iniciada;
+
 import express from 'express';
 
 const app = express();
