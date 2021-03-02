@@ -17,14 +17,16 @@ router.post('/users', userController.create);
 
 
 // --- SURVEYS:
-// POST: http://localhost:3333/users
+// POST: http://localhost:3333/surveys
 router.post('/surveys', surveyController.create);
-// GET: http://localhost:3333/users
+// GET: http://localhost:3333/surveys
 router.get('/surveys', surveyController.show);
 
 // --- EMAIL:
 // POST: http://localhost:3333/sandMail
 router.post('/sendMail', sendMailController.execute);
+// Cadastra uma resposta do usuário:
+// POST: http://localhost:3333/answers/${nota}?u={id_usuario}
 
 
 export{ router };

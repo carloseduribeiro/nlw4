@@ -44,7 +44,9 @@ class SendMailController {
         const variables = {
             name: userAlreadyExists.name,
             title: surveyAlreadyExists.title,
-            description: surveyAlreadyExists.description
+            description: surveyAlreadyExists.description,
+            user_id: userAlreadyExists.id,
+            link: process.env.URL_MAIL
         }
 
         // Envia um email para o usuário:
