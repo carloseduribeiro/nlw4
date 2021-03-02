@@ -1,4 +1,5 @@
 import { Request, Response } from "express";
+import { resolve } from 'path';
 import { getCustomRepository, RepositoryNotTreeError } from "typeorm";
 import { SurveyRepository } from "../repositoryes/SurveyRepository";
 import { SurveysUsersRepository } from "../repositoryes/SurveysUsersRepository";
@@ -37,9 +38,17 @@ class SendMailController {
         });
         await surveysUsersRepository.save(surveyUser);
 
+        // Grava o caminho do arquivo de template do email:
+        const npsPath = resolve(__dirname, "..", "views", "emails", "npsMail.hbs");
+
+        const variables = {
+            name: userAlreadyExists.name,
+            title: surveyAlreadyExists.title,
+            description: surveyAlreadyExists.description
+        }
 
         // Envia um email para o usuário:
-        await SendMailService.execute(email, surveyAlreadyExists.title, surveyAlreadyExists.description);
+        await SendMailService.execute(email, surveyAlreadyExists.title, variables, npsPath);
 
         return response.json(surveyUser);
     }
